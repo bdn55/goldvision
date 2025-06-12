@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GoldVision - Live Gold & Mineral Map (GitHub Version)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    html, body, #map { height: 100%; margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([46.5, -87.5], 7); // Centered on UP Michigan
+
+    // Base layer
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      maxZoom: 17,
+      attribution: '© OpenTopoMap contributors'
+    }).addTo(map);
+
+    // Example gold hotspot in UP Michigan
+    L.marker([46.5600, -87.4200]).addTo(map)
+      .bindPopup('<b>Gold Prospect - Marquette County</b><br>Known lode & placer gold area.<br><a href="https://mrdata.usgs.gov/" target="_blank">USGS MRDS</a>');
+
+    // Example silver occurrence
+    L.marker([46.8500, -89.3200]).addTo(map)
+      .bindPopup('<b>Silver Prospect - Ontonagon County</b><br>Historic silver and copper region.<br><a href="https://mrdata.usgs.gov/" target="_blank">USGS MRDS</a>');
+
+    // Example gemstone site
+    L.marker([46.2000, -88.5000]).addTo(map)
+      .bindPopup('<b>Gemstone Area - Menominee Iron Range</b><br>Potential garnet and agate occurrences.');
+
+  </script>
+</body>
+</html>
